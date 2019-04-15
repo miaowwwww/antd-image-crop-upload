@@ -22,4 +22,5 @@ export interface AntdImageCropUpload extends UploadProps {
    */
   modalProps?: ModalProps;
 }
+declare const AntdImageCropUpload: AntdImageCropUpload;
 export default AntdImageCropUpload;
