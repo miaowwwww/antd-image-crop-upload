@@ -1,0 +1,36 @@
+{
+  "name": "antd-image-crop-upload",
+  "version": "1.0.0",
+  "description": "antd & image-crop 的结合",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "antd": "^3.12.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miaowwwww/antd-image-crop-upload.git"
+  },
+  "keywords": [
+    "antd-image-crop",
+    "image-crop"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miaowwwww/antd-image-crop-upload/issues"
+  },
+  "homepage": "https://github.com/miaowwwww/antd-image-crop-upload#readme",
+  "devDependencies": {
+    "antd": "^3.16.3",
+    "cz-conventional-changelog": "^2.1.0",
+    "webpack": "^4.30.0"
+  },
+  "dependencies": {
+    "react-image-crop": "^6.0.18"
+  }
+}
