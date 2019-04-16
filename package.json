@@ -1,6 +1,6 @@
 {
   "name": "antd-image-crop-upload",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "antd & image-crop 的结合",
   "main": "index.js",
   "types": "index.d.ts",
