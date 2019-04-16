@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "lib": [
+      "scripthost",
+      "dom",
+      "es6"
+    ],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true
+  }
+}
