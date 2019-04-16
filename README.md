@@ -52,3 +52,9 @@ export interface AntdImageCropUploadProps extends UploadProps {
 - 组件不支持自定义上传！
 > 如果 beforeUpload 返回 false，其效果跟返回 Promise.reject() 是一样的
 
+- 允许裁剪的图片-只有符合的才能接受裁剪
+> const ImageTypeReg = /.(jpg|jpeg|png|gif)$/i;
+
+- 只允许一个一个文件上传
+
+
