@@ -108,6 +108,7 @@ var AntdImageCropUpload = /** @class */ (function (_super) {
         };
         /** 在上传前对文件进行裁剪， 使用返回 Promise 的方式 */
         _this.handleBeforeUpload = function (file, fileList) {
+            console.log('init beforeupload', file, fileList);
             var _a = _this.props, imageOnly = _a.imageOnly, beforeUpload = _a.beforeUpload;
             // 是否只允许上传图片-可实现在上传的文件为图片的时候才打开裁剪
             if (!imageOnly) {

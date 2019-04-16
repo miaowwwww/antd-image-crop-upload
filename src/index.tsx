@@ -93,7 +93,7 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
 
   /** 在上传前对文件进行裁剪， 使用返回 Promise 的方式 */
   handleBeforeUpload = (file, fileList) => {
-
+    console.log('init beforeupload', file, fileList);
     const { imageOnly, beforeUpload } = this.props;
     // 是否只允许上传图片-可实现在上传的文件为图片的时候才打开裁剪
     if (!imageOnly) {
