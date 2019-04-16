@@ -1,12 +1,13 @@
 {
   "name": "antd-image-crop-upload",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "antd & image-crop 的结合",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "version": "standard-version -- --release-as"
+    "version": "standard-version -- --release-as",
+    "start": "webpack-dev-server --config ./dome/webpack.config.js --color --hot"
   },
   "peerDependencies": {
     "antd": "^3.12.3",
@@ -29,8 +30,20 @@
   "homepage": "https://github.com/miaowwwww/antd-image-crop-upload#readme",
   "devDependencies": {
     "antd": "^3.16.3",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
     "cz-conventional-changelog": "^2.1.0",
-    "webpack": "^4.30.0"
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "style-loader": "^0.23.1",
+    "ts-import-plugin": "^1.5.5",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.4.3",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "react-image-crop": "^6.0.18"
