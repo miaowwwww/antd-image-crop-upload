@@ -108,7 +108,6 @@ var AntdImageCropUpload = /** @class */ (function (_super) {
         };
         /** 在上传前对文件进行裁剪， 使用返回 Promise 的方式 */
         _this.handleBeforeUpload = function (file, fileList) {
-            console.log('init beforeupload', file, fileList);
             var _a = _this.props, imageOnly = _a.imageOnly, beforeUpload = _a.beforeUpload;
             // 是否只允许上传图片-可实现在上传的文件为图片的时候才打开裁剪
             if (!imageOnly) {
@@ -180,6 +179,7 @@ var AntdImageCropUpload = /** @class */ (function (_super) {
                         name = oldFile.name, type = oldFile.type, uid = oldFile.uid;
                         croppedFile = new File([blob], name, { type: type, lastModified: Date.now() });
                         croppedFile['uid'] = uid;
+                        croppedFile['thumbUrl'] = croppedImageUrl;
                         beforeUpload = this.props.beforeUpload;
                         if (!beforeUpload) {
                             this.resolve(croppedFile);
@@ -188,21 +188,18 @@ var AntdImageCropUpload = /** @class */ (function (_super) {
                         }
                         newFileList = oldFileList.reduce(function (pre, cur) {
                             pre.push(cur.uid === uid ? croppedFile : cur);
+                            return pre;
                         }, []);
                         result = beforeUpload(croppedFile, newFileList);
                         if (result === false) {
                             this.reject();
+                            this.handleChange({ file: croppedFile, fileList: this.state.fileList.concat([croppedFile]) });
                             this.handleCancel();
                             return [2 /*return*/];
                         }
                         // Upload 组件中 undefined 与 true 返回的是一样的效果
-                        if (result === undefined || result) {
-                            this.resolve(croppedFile);
-                            this.handleCancel();
-                            return [2 /*return*/];
-                        }
                         // promise 具有 then 方式
-                        if (!result.then) {
+                        if (result === undefined || result && !result.then) {
                             this.resolve(croppedFile);
                             this.handleCancel();
                             return [2 /*return*/];

@@ -11,7 +11,7 @@ import {
 } from 'antd';
 import { AntdImageCropUploadProps, AntdImageCropUploadState } from './index.d';
 
-/** 可以进行裁剪的图片格式 */ 
+/** 可以进行裁剪的图片格式 */
 const ImageTypeReg = /.(jpg|jpeg|png|gif)$/i;
 /** base64 转 blob */
 const base64ToBlob = (urlData, type) => {
@@ -93,7 +93,6 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
 
   /** 在上传前对文件进行裁剪， 使用返回 Promise 的方式 */
   handleBeforeUpload = (file, fileList) => {
-    console.log('init beforeupload', file, fileList);
     const { imageOnly, beforeUpload } = this.props;
     // 是否只允许上传图片-可实现在上传的文件为图片的时候才打开裁剪
     if (!imageOnly) {
@@ -114,7 +113,7 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
 
       /** 上传了不允许裁剪的图片 */
       if (!ImageTypeReg.test(file.name)) {
-        notification.error({message: '错误', description: '该文件不允许裁剪'})
+        notification.error({ message: '错误', description: '该文件不允许裁剪' })
         this.reject();
         return;
       }
@@ -167,13 +166,13 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
       oldFileList,
       croppedImageUrl
     } = this.state;
-
     // 1. base64 转成 blob -- 为什么一开始不是blob，因为blob不能直接预览
     const blob: any = base64ToBlob(croppedImageUrl, oldFile.type);
     // 2. 生成新的图片文件
     const { name, type, uid } = oldFile;
     const croppedFile: any = new File([blob], name, { type, lastModified: Date.now() });
     croppedFile['uid'] = uid;
+    croppedFile['thumbUrl'] = croppedImageUrl;
 
     // 3. 回归Upload组件，开始上传
     // 3.1 beforeUpload - 为空， 返回 boolean，返回undefined， 返回 Promise
@@ -183,26 +182,22 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
       this.handleCancel();
       return;
     }
-
     const newFileList = oldFileList.reduce((pre, cur) => {
       pre.push(cur.uid === uid ? croppedFile : cur);
+      return pre;
     }, []);
+
     const result: any = beforeUpload(croppedFile, newFileList);
     if (result === false) {
       this.reject();
+      this.handleChange({ file: croppedFile, fileList: [...this.state.fileList, croppedFile] });
       this.handleCancel();
       return;
     }
 
     // Upload 组件中 undefined 与 true 返回的是一样的效果
-    if (result === undefined || result) {
-      this.resolve(croppedFile);
-      this.handleCancel();
-      return;
-    }
-
     // promise 具有 then 方式
-    if (!result.then) {
+    if (result === undefined || result && !result.then) {
       this.resolve(croppedFile);
       this.handleCancel();
       return;
