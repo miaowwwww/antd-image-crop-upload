@@ -46,7 +46,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "react-image-crop": "^6.0.18"
+    "react-image-crop": "6.0.18"
   },
   "config": {
     "commitizen": {

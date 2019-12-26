@@ -135,7 +135,7 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
        * 2. 最终在 handleModal 中 执行 this.resolve()
        */
       const reader = new FileReader();
-      reader.onload = e => {
+      reader.onload = (e: any) => {
         this.setState({
           oldFile: file,
           oldFileList: fileList,
@@ -347,11 +347,11 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
           {children}
         </Upload>
         <Modal
-          {...resModalProps}
-          visible={modalVisible}
           title="裁剪照片"
           width={600}
           maskClosable={false}
+          {...resModalProps}
+          visible={modalVisible}
           onCancel={this.handleCancel}
           onOk={this.handleOk}
           okButtonProps={{
@@ -363,7 +363,7 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
           {
             previewDataUrl &&
             <React.Fragment>
-              <Row type="flex" gutter={8} align="top" justify="space-between" >
+              <Row gutter={8} >
                 <Col span={18}>
                   <div>原图：</div>
                   <ReactCrop
@@ -381,7 +381,7 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
                 <Col span={6}>
                   <Spin spinning={previewLoading}>
                     <div>预览：</div>
-                    {croppedImageUrl && <img src={croppedImageUrl} width="100%" style={{ border: '1px solid #888' }} />}
+                    {croppedImageUrl && <img src={croppedImageUrl} style={{ border: '1px solid #888', maxHeight: '40vh', maxWidth: '100%' }} />}
                     <div>
                       {
                         targetImage && targetImage.width && targetImage.height ?

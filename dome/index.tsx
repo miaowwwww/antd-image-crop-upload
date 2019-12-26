@@ -25,7 +25,7 @@ class App extends React.PureComponent {
         <Header>header</Header>
         <Content>
           <AntdImageCropUpload
-           action="//jsonplaceholder.typicode.com/posts/"
+            action="//jsonplaceholder.typicode.com/posts/"
             // fileList={this.state.fileList || []}
             imageOnly={false}
             onChange={this.handleChange}

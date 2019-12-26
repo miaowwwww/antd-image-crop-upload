@@ -359,9 +359,9 @@ var AntdImageCropUpload = /** @class */ (function (_super) {
         var _b = this.state, modalVisible = _b.modalVisible, crop = _b.crop, previewDataUrl = _b.previewDataUrl, fileList = _b.fileList, croppedImageUrl = _b.croppedImageUrl, _c = _b.imageRef, imageRef = _c === void 0 ? {} : _c, _d = _b.pixelCrop, pixelCrop = _d === void 0 ? {} : _d, previewLoading = _b.previewLoading;
         return (React.createElement(React.Fragment, null,
             React.createElement(antd_1.Upload, __assign({ accept: imageOnly ? 'image/*' : undefined }, restProps, { beforeUpload: this.handleBeforeUpload, fileList: fileList, onChange: this.handleChange, multiple: false }), children),
-            React.createElement(antd_1.Modal, __assign({}, resModalProps, { visible: modalVisible, title: "\u88C1\u526A\u7167\u7247", width: 600, maskClosable: false, onCancel: this.handleCancel, onOk: this.handleOk, okButtonProps: __assign({}, okButtonProps, { loading: previewLoading, disabled: !croppedImageUrl }) }), previewDataUrl &&
+            React.createElement(antd_1.Modal, __assign({ title: "\u88C1\u526A\u7167\u7247", width: 600, maskClosable: false }, resModalProps, { visible: modalVisible, onCancel: this.handleCancel, onOk: this.handleOk, okButtonProps: __assign({}, okButtonProps, { loading: previewLoading, disabled: !croppedImageUrl }) }), previewDataUrl &&
                 React.createElement(React.Fragment, null,
-                    React.createElement(antd_1.Row, { type: "flex", gutter: 8, align: "top", justify: "space-between" },
+                    React.createElement(antd_1.Row, { gutter: 8 },
                         React.createElement(antd_1.Col, { span: 18 },
                             React.createElement("div", null, "\u539F\u56FE\uFF1A"),
                             React.createElement(react_image_crop_1.default, { style: { maxHeight: '40vh' }, crop: crop, src: previewDataUrl, onImageLoaded: this.onImageLoaded, onComplete: this.onCropComplete, onChange: this.onCropChange }),
@@ -369,7 +369,7 @@ var AntdImageCropUpload = /** @class */ (function (_super) {
                         React.createElement(antd_1.Col, { span: 6 },
                             React.createElement(antd_1.Spin, { spinning: previewLoading },
                                 React.createElement("div", null, "\u9884\u89C8\uFF1A"),
-                                croppedImageUrl && React.createElement("img", { src: croppedImageUrl, width: "100%", style: { border: '1px solid #888' } }),
+                                croppedImageUrl && React.createElement("img", { src: croppedImageUrl, style: { border: '1px solid #888', maxHeight: '40vh', maxWidth: '100%' } }),
                                 React.createElement("div", null, targetImage && targetImage.width && targetImage.height ?
                                     "X:" + targetImage.width + " Y:" + targetImage.height :
                                     "X:" + pixelCrop.width + " Y:" + pixelCrop.height))))))));
