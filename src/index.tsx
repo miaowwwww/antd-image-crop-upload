@@ -376,18 +376,18 @@ export default class AntdImageCropUpload extends React.Component<AntdImageCropUp
                   // onDragStart={this.onDragStart}
                   // onDragEnd={this.onDragEnd}
                   />
-                  <div>{`X:${imageRef.naturalWidth} Y:${imageRef.naturalHeight}`}</div>
+                  {/* <div>{`X:${imageRef.naturalWidth} Y:${imageRef.naturalHeight}`}</div> */}
                 </Col>
                 <Col span={6}>
                   <Spin spinning={previewLoading}>
                     <div>预览：</div>
                     {croppedImageUrl && <img src={croppedImageUrl} style={{ border: '1px solid #888', maxHeight: '40vh', maxWidth: '100%' }} />}
                     <div>
-                      {
+                      {/* {
                         targetImage && targetImage.width && targetImage.height ?
                           `X:${targetImage.width} Y:${targetImage.height}` :
                           `X:${pixelCrop.width} Y:${pixelCrop.height}`
-                      }
+                      } */}
                     </div>
                   </Spin>
                 </Col>
